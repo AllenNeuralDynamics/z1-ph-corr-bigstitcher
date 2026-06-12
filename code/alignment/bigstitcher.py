@@ -341,7 +341,7 @@ def main(
 
     curr_folder = Path(os.path.realpath(__file__)).parent
     code_folder = curr_folder.parent
-    run_classes_script = code_folder / "run_classes.sh"
+    run_classes_script = code_folder / "alignment/run_classes.sh"
 
     # Assuming machine with 128G and 16 cores
     env.update(

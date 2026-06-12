@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Stream to UI + save full logs
+python /code/run_capsule.py "$@" 2>&1 | tee /results/logs.txt
+
+python /code/single_channel_xmls/combine_stitching_and_camera_alignment.py

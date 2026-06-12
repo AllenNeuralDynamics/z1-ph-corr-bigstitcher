@@ -1,5 +1,5 @@
 metadata_version: 1
-name: z1-ph-corr-bigstitcher-dev
+name: z1-ph-corr-bigstitcher
 description: z1 alignment capsule using big stitcher phase correlation
 authors:
 - name: Sean Fite

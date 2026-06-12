@@ -1,0 +1,59 @@
+{
+  "pipeline_processing": {
+    "stitching_channels": [
+      "488",
+      "561",
+      "638"
+    ],
+    "stitching": {
+      "channel": "488"
+    },
+    "radial_correction": {
+      "channels": [
+        488,
+        561,
+        638
+      ],
+      "workers": 8
+    }
+  },
+  "segmentation_channels": {
+    "background": null,
+    "nuclear": null
+  },
+  "spot_channels": [
+    "488",
+    "561",
+    "638"
+  ],
+  "round": -1,
+  "stitching_channels": [
+    "488",
+    "561",
+    "638"
+  ],
+  "gene_dict": {
+    "488": {
+      "gene": "gene_0",
+      "barcode": "",
+      "fluorophore": "",
+      "wavelength": "488",
+      "round": -1
+    },
+    "561": {
+      "gene": "gene_1",
+      "barcode": "",
+      "fluorophore": "",
+      "wavelength": "561",
+      "round": -1
+    },
+    "638": {
+      "gene": "gene_2",
+      "barcode": "",
+      "fluorophore": "",
+      "wavelength": "638",
+      "round": -1
+    }
+  },
+  "s3_location": "s3://aind-open-data/HCR_823476-s1-ls2_2025-11-18_00-00-00_processed_2025-11-19_22-11-11_processed_2026-02-11_17-31-12/"
+}

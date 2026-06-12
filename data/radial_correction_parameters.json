@@ -1,0 +1,24 @@
+{
+    "tilenames": [
+        "Tile_X_0001_Y_0002_Z_0000_ch_488.ome.zarr",
+        "Tile_X_0001_Y_0002_Z_0000_ch_561.ome.zarr",
+        "Tile_X_0001_Y_0002_Z_0000_ch_638.ome.zarr",
+        "Tile_X_0001_Y_0003_Z_0000_ch_488.ome.zarr",
+        "Tile_X_0001_Y_0003_Z_0000_ch_561.ome.zarr",
+        "Tile_X_0001_Y_0003_Z_0000_ch_638.ome.zarr"
+    ],
+    "radial_correction_parameters": {
+        "channels": [
+            488,
+            561,
+            638
+        ],
+        "workers": 8
+    },
+    "output_path": "/tmp/nxf.Yt9D1mvzvz/capsule/results/worker_3",
+    "worker_id": 3,
+    "bucket_name": "aind-open-data",
+    "input_s3_dataset_path": "HCR_823476-s1-ls2_2025-11-18_00-00-00/SPIM",
+    "tensorstore_driver": "zarr3",
+    "write_to_s3": true
+}

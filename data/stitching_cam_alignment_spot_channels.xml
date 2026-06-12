@@ -1,0 +1,2147 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SpimData version="0.2">
+	<BasePath type="relative">.</BasePath>
+	<SequenceDescription>
+		<ImageLoader format="bdv.multimg.zarr" version="1.0">
+			<zarr type="absolute">s3://aind-open-data/HCR_823476-s2-ls1_2025-11-18_00-00-04_processed_2026-06-08_17-45-57/image_radial_correction/</zarr>
+			<zgroups>
+				<zgroup setup="2" timepoint="0">
+					<path>Tile_X_0000_Y_0000_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="47" timepoint="0">
+					<path>Tile_X_0003_Y_0000_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="46" timepoint="0">
+					<path>Tile_X_0003_Y_0000_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="60" timepoint="0">
+					<path>Tile_X_0004_Y_0000_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="62" timepoint="0">
+					<path>Tile_X_0004_Y_0000_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="61" timepoint="0">
+					<path>Tile_X_0004_Y_0000_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="63" timepoint="0">
+					<path>Tile_X_0004_Y_0001_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="65" timepoint="0">
+					<path>Tile_X_0004_Y_0001_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="64" timepoint="0">
+					<path>Tile_X_0004_Y_0001_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="48" timepoint="0">
+					<path>Tile_X_0003_Y_0001_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="50" timepoint="0">
+					<path>Tile_X_0003_Y_0001_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="1" timepoint="0">
+					<path>Tile_X_0000_Y_0000_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="49" timepoint="0">
+					<path>Tile_X_0003_Y_0001_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="33" timepoint="0">
+					<path>Tile_X_0002_Y_0001_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="35" timepoint="0">
+					<path>Tile_X_0002_Y_0001_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="34" timepoint="0">
+					<path>Tile_X_0002_Y_0001_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="18" timepoint="0">
+					<path>Tile_X_0001_Y_0001_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="20" timepoint="0">
+					<path>Tile_X_0001_Y_0001_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="19" timepoint="0">
+					<path>Tile_X_0001_Y_0001_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="3" timepoint="0">
+					<path>Tile_X_0000_Y_0001_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="5" timepoint="0">
+					<path>Tile_X_0000_Y_0001_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="4" timepoint="0">
+					<path>Tile_X_0000_Y_0001_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="15" timepoint="0">
+					<path>Tile_X_0001_Y_0000_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="6" timepoint="0">
+					<path>Tile_X_0000_Y_0002_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="8" timepoint="0">
+					<path>Tile_X_0000_Y_0002_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="7" timepoint="0">
+					<path>Tile_X_0000_Y_0002_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="21" timepoint="0">
+					<path>Tile_X_0001_Y_0002_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="23" timepoint="0">
+					<path>Tile_X_0001_Y_0002_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="22" timepoint="0">
+					<path>Tile_X_0001_Y_0002_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="36" timepoint="0">
+					<path>Tile_X_0002_Y_0002_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="38" timepoint="0">
+					<path>Tile_X_0002_Y_0002_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="37" timepoint="0">
+					<path>Tile_X_0002_Y_0002_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="51" timepoint="0">
+					<path>Tile_X_0003_Y_0002_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="17" timepoint="0">
+					<path>Tile_X_0001_Y_0000_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="53" timepoint="0">
+					<path>Tile_X_0003_Y_0002_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="52" timepoint="0">
+					<path>Tile_X_0003_Y_0002_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="66" timepoint="0">
+					<path>Tile_X_0004_Y_0002_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="68" timepoint="0">
+					<path>Tile_X_0004_Y_0002_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="67" timepoint="0">
+					<path>Tile_X_0004_Y_0002_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="69" timepoint="0">
+					<path>Tile_X_0004_Y_0003_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="71" timepoint="0">
+					<path>Tile_X_0004_Y_0003_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="70" timepoint="0">
+					<path>Tile_X_0004_Y_0003_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="54" timepoint="0">
+					<path>Tile_X_0003_Y_0003_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="56" timepoint="0">
+					<path>Tile_X_0003_Y_0003_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="16" timepoint="0">
+					<path>Tile_X_0001_Y_0000_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="55" timepoint="0">
+					<path>Tile_X_0003_Y_0003_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="39" timepoint="0">
+					<path>Tile_X_0002_Y_0003_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="41" timepoint="0">
+					<path>Tile_X_0002_Y_0003_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="40" timepoint="0">
+					<path>Tile_X_0002_Y_0003_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="24" timepoint="0">
+					<path>Tile_X_0001_Y_0003_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="26" timepoint="0">
+					<path>Tile_X_0001_Y_0003_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="25" timepoint="0">
+					<path>Tile_X_0001_Y_0003_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="9" timepoint="0">
+					<path>Tile_X_0000_Y_0003_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="11" timepoint="0">
+					<path>Tile_X_0000_Y_0003_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="10" timepoint="0">
+					<path>Tile_X_0000_Y_0003_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="30" timepoint="0">
+					<path>Tile_X_0002_Y_0000_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="12" timepoint="0">
+					<path>Tile_X_0000_Y_0004_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="14" timepoint="0">
+					<path>Tile_X_0000_Y_0004_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="13" timepoint="0">
+					<path>Tile_X_0000_Y_0004_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="27" timepoint="0">
+					<path>Tile_X_0001_Y_0004_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="29" timepoint="0">
+					<path>Tile_X_0001_Y_0004_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="28" timepoint="0">
+					<path>Tile_X_0001_Y_0004_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="42" timepoint="0">
+					<path>Tile_X_0002_Y_0004_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="44" timepoint="0">
+					<path>Tile_X_0002_Y_0004_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="43" timepoint="0">
+					<path>Tile_X_0002_Y_0004_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="57" timepoint="0">
+					<path>Tile_X_0003_Y_0004_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="32" timepoint="0">
+					<path>Tile_X_0002_Y_0000_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="59" timepoint="0">
+					<path>Tile_X_0003_Y_0004_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="58" timepoint="0">
+					<path>Tile_X_0003_Y_0004_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="72" timepoint="0">
+					<path>Tile_X_0004_Y_0004_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="74" timepoint="0">
+					<path>Tile_X_0004_Y_0004_Z_0000_ch_638.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="73" timepoint="0">
+					<path>Tile_X_0004_Y_0004_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="31" timepoint="0">
+					<path>Tile_X_0002_Y_0000_Z_0000_ch_561.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="45" timepoint="0">
+					<path>Tile_X_0003_Y_0000_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+				<zgroup setup="0" timepoint="0">
+					<path>Tile_X_0000_Y_0000_Z_0000_ch_488.ome.zarr</path>
+				</zgroup>
+			</zgroups>
+		</ImageLoader>
+		<ViewSetups>
+			<ViewSetup>
+				<id>2</id>
+				<name>Tile_X_0000_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>2</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>47</id>
+				<name>Tile_X_0003_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>47</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>46</id>
+				<name>Tile_X_0003_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>46</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>60</id>
+				<name>Tile_X_0004_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>60</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>62</id>
+				<name>Tile_X_0004_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>62</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>61</id>
+				<name>Tile_X_0004_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>61</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>63</id>
+				<name>Tile_X_0004_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>63</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>65</id>
+				<name>Tile_X_0004_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>65</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>64</id>
+				<name>Tile_X_0004_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>64</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>48</id>
+				<name>Tile_X_0003_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>48</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>50</id>
+				<name>Tile_X_0003_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>50</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>1</id>
+				<name>Tile_X_0000_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>1</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>49</id>
+				<name>Tile_X_0003_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>49</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>33</id>
+				<name>Tile_X_0002_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>33</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>35</id>
+				<name>Tile_X_0002_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>35</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>34</id>
+				<name>Tile_X_0002_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>34</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>18</id>
+				<name>Tile_X_0001_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>18</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>20</id>
+				<name>Tile_X_0001_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>20</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>19</id>
+				<name>Tile_X_0001_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>19</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>3</id>
+				<name>Tile_X_0000_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>3</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>5</id>
+				<name>Tile_X_0000_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>5</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>4</id>
+				<name>Tile_X_0000_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>4</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>15</id>
+				<name>Tile_X_0001_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>15</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>6</id>
+				<name>Tile_X_0000_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>6</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>8</id>
+				<name>Tile_X_0000_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>8</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>7</id>
+				<name>Tile_X_0000_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>7</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>21</id>
+				<name>Tile_X_0001_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>21</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>23</id>
+				<name>Tile_X_0001_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>23</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>22</id>
+				<name>Tile_X_0001_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>22</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>36</id>
+				<name>Tile_X_0002_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>36</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>38</id>
+				<name>Tile_X_0002_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>38</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>37</id>
+				<name>Tile_X_0002_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>37</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>51</id>
+				<name>Tile_X_0003_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>51</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>17</id>
+				<name>Tile_X_0001_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>17</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>53</id>
+				<name>Tile_X_0003_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>53</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>52</id>
+				<name>Tile_X_0003_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>52</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>66</id>
+				<name>Tile_X_0004_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>66</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>68</id>
+				<name>Tile_X_0004_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>68</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>67</id>
+				<name>Tile_X_0004_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>67</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>69</id>
+				<name>Tile_X_0004_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>69</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>71</id>
+				<name>Tile_X_0004_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>71</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>70</id>
+				<name>Tile_X_0004_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>70</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>54</id>
+				<name>Tile_X_0003_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>54</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>56</id>
+				<name>Tile_X_0003_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>56</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>16</id>
+				<name>Tile_X_0001_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>16</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>55</id>
+				<name>Tile_X_0003_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>55</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>39</id>
+				<name>Tile_X_0002_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>39</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>41</id>
+				<name>Tile_X_0002_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>41</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>40</id>
+				<name>Tile_X_0002_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>40</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>24</id>
+				<name>Tile_X_0001_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>24</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>26</id>
+				<name>Tile_X_0001_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>26</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>25</id>
+				<name>Tile_X_0001_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>25</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>9</id>
+				<name>Tile_X_0000_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>9</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>11</id>
+				<name>Tile_X_0000_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>11</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>10</id>
+				<name>Tile_X_0000_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>10</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>30</id>
+				<name>Tile_X_0002_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>30</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>12</id>
+				<name>Tile_X_0000_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>12</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>14</id>
+				<name>Tile_X_0000_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>14</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>13</id>
+				<name>Tile_X_0000_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>13</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>27</id>
+				<name>Tile_X_0001_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>27</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>29</id>
+				<name>Tile_X_0001_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>29</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>28</id>
+				<name>Tile_X_0001_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>28</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>42</id>
+				<name>Tile_X_0002_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>42</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>44</id>
+				<name>Tile_X_0002_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>44</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>43</id>
+				<name>Tile_X_0002_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>43</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>57</id>
+				<name>Tile_X_0003_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>57</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>32</id>
+				<name>Tile_X_0002_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>32</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>59</id>
+				<name>Tile_X_0003_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>59</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>58</id>
+				<name>Tile_X_0003_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>58</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>72</id>
+				<name>Tile_X_0004_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>72</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>74</id>
+				<name>Tile_X_0004_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>638</channel>
+					<tile>74</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>73</id>
+				<name>Tile_X_0004_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>73</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>31</id>
+				<name>Tile_X_0002_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>561</channel>
+					<tile>31</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>45</id>
+				<name>Tile_X_0003_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>45</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<ViewSetup>
+				<id>0</id>
+				<name>Tile_X_0000_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				<size>1920 1920 1278</size>
+				<voxelSize>
+					<unit>µm</unit>
+					<size>0.09312112026699067 0.09312112026699067 0.3850332960960667</size>
+				</voxelSize>
+				<attributes>
+					<illumination>0</illumination>
+					<channel>488</channel>
+					<tile>0</tile>
+					<angle>0</angle>
+				</attributes>
+			</ViewSetup>
+			<Attributes name="illumination">
+				<Illumination>
+					<id>0</id>
+					<name>0</name>
+				</Illumination>
+			</Attributes>
+			<Attributes name="channel">
+				<Channel>
+					<id>488</id>
+					<name>488</name>
+				</Channel>
+				<Channel>
+					<id>561</id>
+					<name>561</name>
+				</Channel>
+				<Channel>
+					<id>638</id>
+					<name>638</name>
+				</Channel>
+			</Attributes>
+			<Attributes name="tile">
+				<Tile>
+					<id>0</id>
+					<name>Tile_X_0000_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>1</id>
+					<name>Tile_X_0000_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>2</id>
+					<name>Tile_X_0000_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>3</id>
+					<name>Tile_X_0000_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>4</id>
+					<name>Tile_X_0000_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>5</id>
+					<name>Tile_X_0000_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>6</id>
+					<name>Tile_X_0000_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>7</id>
+					<name>Tile_X_0000_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>8</id>
+					<name>Tile_X_0000_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>9</id>
+					<name>Tile_X_0000_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>10</id>
+					<name>Tile_X_0000_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>11</id>
+					<name>Tile_X_0000_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>12</id>
+					<name>Tile_X_0000_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>13</id>
+					<name>Tile_X_0000_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>14</id>
+					<name>Tile_X_0000_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>15</id>
+					<name>Tile_X_0001_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>16</id>
+					<name>Tile_X_0001_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>17</id>
+					<name>Tile_X_0001_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>18</id>
+					<name>Tile_X_0001_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>19</id>
+					<name>Tile_X_0001_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>20</id>
+					<name>Tile_X_0001_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>21</id>
+					<name>Tile_X_0001_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>22</id>
+					<name>Tile_X_0001_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>23</id>
+					<name>Tile_X_0001_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>24</id>
+					<name>Tile_X_0001_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>25</id>
+					<name>Tile_X_0001_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>26</id>
+					<name>Tile_X_0001_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>27</id>
+					<name>Tile_X_0001_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>28</id>
+					<name>Tile_X_0001_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>29</id>
+					<name>Tile_X_0001_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>30</id>
+					<name>Tile_X_0002_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>31</id>
+					<name>Tile_X_0002_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>32</id>
+					<name>Tile_X_0002_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>33</id>
+					<name>Tile_X_0002_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>34</id>
+					<name>Tile_X_0002_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>35</id>
+					<name>Tile_X_0002_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>36</id>
+					<name>Tile_X_0002_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>37</id>
+					<name>Tile_X_0002_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>38</id>
+					<name>Tile_X_0002_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>39</id>
+					<name>Tile_X_0002_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>40</id>
+					<name>Tile_X_0002_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>41</id>
+					<name>Tile_X_0002_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>42</id>
+					<name>Tile_X_0002_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>43</id>
+					<name>Tile_X_0002_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>44</id>
+					<name>Tile_X_0002_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>45</id>
+					<name>Tile_X_0003_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>46</id>
+					<name>Tile_X_0003_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>47</id>
+					<name>Tile_X_0003_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>48</id>
+					<name>Tile_X_0003_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>49</id>
+					<name>Tile_X_0003_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>50</id>
+					<name>Tile_X_0003_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>51</id>
+					<name>Tile_X_0003_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>52</id>
+					<name>Tile_X_0003_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>53</id>
+					<name>Tile_X_0003_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>54</id>
+					<name>Tile_X_0003_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>55</id>
+					<name>Tile_X_0003_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>56</id>
+					<name>Tile_X_0003_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>57</id>
+					<name>Tile_X_0003_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>58</id>
+					<name>Tile_X_0003_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>59</id>
+					<name>Tile_X_0003_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>60</id>
+					<name>Tile_X_0004_Y_0000_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>61</id>
+					<name>Tile_X_0004_Y_0000_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>62</id>
+					<name>Tile_X_0004_Y_0000_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>63</id>
+					<name>Tile_X_0004_Y_0001_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>64</id>
+					<name>Tile_X_0004_Y_0001_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>65</id>
+					<name>Tile_X_0004_Y_0001_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>66</id>
+					<name>Tile_X_0004_Y_0002_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>67</id>
+					<name>Tile_X_0004_Y_0002_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>68</id>
+					<name>Tile_X_0004_Y_0002_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>69</id>
+					<name>Tile_X_0004_Y_0003_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>70</id>
+					<name>Tile_X_0004_Y_0003_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>71</id>
+					<name>Tile_X_0004_Y_0003_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>72</id>
+					<name>Tile_X_0004_Y_0004_Z_0000_ch_488.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>73</id>
+					<name>Tile_X_0004_Y_0004_Z_0000_ch_561.ome.zarr</name>
+				</Tile>
+				<Tile>
+					<id>74</id>
+					<name>Tile_X_0004_Y_0004_Z_0000_ch_638.ome.zarr</name>
+				</Tile>
+			</Attributes>
+			<Attributes name="angle">
+				<Angle>
+					<id>0</id>
+					<name>0</name>
+				</Angle>
+			</Attributes>
+		</ViewSetups>
+		<Timepoints type="pattern">
+			<integerpattern>0</integerpattern>
+		</Timepoints>
+		<MissingViews />
+	</SequenceDescription>
+	<ViewRegistrations>
+		<ViewRegistration timepoint="0" setup="0">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="1">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="2">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="3">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="4">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="5">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="6">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="7">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="8">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="9">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="10">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="11">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="12">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="13">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="14">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -3661.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="15">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="16">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="17">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="18">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="19">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="20">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="21">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="22">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="23">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="24">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="25">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="26">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="27">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="28">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="29">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -1837.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="30">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="31">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="32">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="33">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="34">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="35">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="36">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="37">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="38">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="39">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="40">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="41">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="42">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="43">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="44">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 -13.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="45">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="46">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="47">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="48">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="49">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="50">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="51">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="52">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="53">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="54">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="55">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="56">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="57">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="58">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="59">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 1810.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="60">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="61">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="62">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -3738.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="63">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="64">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="65">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -1914.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="66">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="67">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="68">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 -90.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="69">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="70">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="71">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 1733.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="72">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="73">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+		<ViewRegistration timepoint="0" setup="74">
+			<ViewTransform type="affine">
+				<Name>Translation to Nominal Grid</Name>
+				<affine>1.0 0.0 0.0 3634.00000 0.0 1.0 0.0 3557.00000 0.0 0.0 1.0 0.00000</affine>
+			</ViewTransform>
+		</ViewRegistration>
+	</ViewRegistrations>
+</SpimData>

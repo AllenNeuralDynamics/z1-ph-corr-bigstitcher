@@ -331,6 +331,8 @@ def main(
     
     downsampled_scale = int(scale_for_transforms)
 
+    downsampled_scale = 8
+
     is_proteomics = False
     project_name = utils.get_project_name()
     if project_name == "PLACE": 

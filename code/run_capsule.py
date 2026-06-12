@@ -2,18 +2,73 @@
 Run capsule for BigStitcher stitching
 """
 
+import csv
 import os
+import re
+import boto3
 from pathlib import Path
+from urllib.parse import urlparse
 
 from alignment import bigstitcher
+from metrics.run_metrics import RunMetrics
 from util import utils
 
-import re
-import csv
-from pathlib import Path
+def list_results_tree(results_dir: Path) -> None:
+    """
+    Recursively list everything under /results so we can see what QC produced.
+    """
+    print(f"\n📂 Contents of {results_dir}:")
+    if not results_dir.exists():
+        print("   (directory does not exist)")
+        return
 
-from microscopy_qc.phase_correlation.run_metrics import RunMetrics
+    count = 0
+    for p in sorted(results_dir.rglob("*")):
+        if p.is_file():
+            rel = p.relative_to(results_dir)
+            size = p.stat().st_size
+            print(f"   - {rel} ({size} bytes)")
+            count += 1
 
+    if count == 0:
+        print("   (no files found)")
+    else:
+        print(f"   → Total files: {count}")
+
+def mirror_s3_prefix_to_results(s3_prefix: str, results_dir: Path) -> None:
+    """
+    Mirror all S3 objects under `s3_prefix` into the local `/results` directory,
+    preserving relative paths, and print what we downloaded.
+    """
+    parsed = urlparse(s3_prefix)
+    bucket = parsed.netloc
+    prefix = parsed.path.lstrip("/")
+
+    print(f"🔍 Mirroring S3 prefix: s3://{bucket}/{prefix} -> {results_dir}")
+
+    s3 = boto3.client("s3")
+    paginator = s3.get_paginator("list_objects_v2")
+    total_files = 0
+
+    for page in paginator.paginate(Bucket=bucket, Prefix=prefix):
+        contents = page.get("Contents", [])
+        if not contents:
+            continue
+
+        for obj in contents:
+            key = obj["Key"]
+            if key.endswith("/"):
+                continue
+
+            rel = key[len(prefix):].lstrip("/")
+            local_path = results_dir / rel
+            local_path.parent.mkdir(parents=True, exist_ok=True)
+
+            print(f"📥 Downloading: s3://{bucket}/{key} -> {local_path}")
+            s3.download_file(bucket, key, str(local_path))
+            total_files += 1
+
+    print(f"✅ Finished mirroring {total_files} file(s) from {s3_prefix} into {results_dir}")
 
 def write_solver_removed_links_csv(results_folder: Path) -> None:
     """
@@ -132,16 +187,30 @@ def run():
 
     write_solver_removed_links_csv(results_folder)
 
-    # call metric library
+    dropped_csv_path = results_folder / "solver_removed_links.csv"
+    xml_path = results_folder / "bigstitcher.xml"
 
-    dropped_csv_path = "s3://aind-open-data/HCR_831990-s5-ls2_2026-06-09_00-00-00_processed_2026-06-11_07-29-32/image_tile_alignment/solver_removed_links.csv"
-    xml_path = "s3://aind-open-data/HCR_831990-s5-ls2_2026-06-09_00-00-00_processed_2026-06-11_07-29-32/image_tile_alignment/bigstitcher.xml"
-    output_path = "examples/metrics-test"
+    if not xml_path.exists():
+        raise FileNotFoundError(f"Expected BigStitcher XML was not found: {xml_path}")
 
-    # Generate alignment metrics and save to s3
-    run_metrics = RunMetrics(dropped_csv_path, xml_path, output_path)
+    if not dropped_csv_path.exists():
+        dropped_csv_path = None
+
+    metrics_output_path = (
+        f"s3://{bucket_name}/{processed_asset_name}/image_tile_alignment/alignment_metrics"
+    )
+
+    print(f"QC output will be written to: {metrics_output_path}")
+
+    run_metrics = RunMetrics(
+        dropped_csv_path=dropped_csv_path,
+        xml_path=xml_path,
+        output_path=metrics_output_path,
+    )
     run_metrics.run_alignment_metrics()
 
+    mirror_s3_prefix_to_results(metrics_output_path, results_folder)
+    list_results_tree(results_folder)
 
 if __name__ == "__main__":
     run()

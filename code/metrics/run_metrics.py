@@ -16,7 +16,7 @@ class RunMetrics:
 
         self.xy_thres = 2.0
         self.view_scale_level = "2"
-        self.zarr_scale_level = "4"
+        self.zarr_scale_level = "2"
 
     def _is_s3_path(self, path: str) -> bool:
         return path.startswith("s3://")

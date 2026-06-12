@@ -1,2 +1,5 @@
 metadata_version: 1
-name: z1-ph-corr-bigstitcher
+name: z1-ph-corr-bigstitcher-dev
+authors:
+- name: Sean Fite
+- name: Carson Berry

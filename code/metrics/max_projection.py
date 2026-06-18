@@ -571,10 +571,25 @@ class NominalMaxProjectionMosaic:
             legend_handles.append(
                 Line2D([0], [0], color="white", lw=max(0.7, 1.0 * style), alpha=0.55, linestyle="--", label="tile bounds")
             )
+        
+        legend_ncol = 5 if tile_bounds else 4
+
+        # Put title and legend in separate figure-level bands.
+        # Using fig.suptitle avoids fighting with ax.set_title + tight_layout.
+        fig.suptitle(
+            "Depth-colored max projection with pairwise links",
+            color="white",
+            fontsize=12,
+            y=0.985,
+        )
 
         legend = fig.legend(
-            handles=legend_handles, title="Link bands", loc="upper center",
-            ncol=5 if tile_bounds else 4, bbox_to_anchor=(0.5, 0.992), frameon=True,
+            handles=legend_handles,
+            title="Link bands",
+            loc="upper center",
+            ncol=legend_ncol,
+            bbox_to_anchor=(0.5, 0.945),
+            frameon=True,
         )
 
         legend.get_frame().set_facecolor("black")
@@ -585,11 +600,12 @@ class NominalMaxProjectionMosaic:
         for text in legend.get_texts():
             text.set_color("white")
 
-        ax.set_title("Depth-colored max projection with pairwise links", color="white", pad=18)
         ax.set_axis_off()
-        
+
         self.add_depth_colorbar(fig, ax, z_count=z_count, pad=0.030)
-        fig.tight_layout(rect=[0.0, 0.035, 1.0, 0.970])
+
+        fig.tight_layout(rect=[0.0, 0.055, 1.0, 0.875])
+
         uri = self.save_figure_png(fig, output_name, dpi=250, bbox_inches="tight", pad_inches=0.12)
 
         plt.close(fig)

@@ -209,8 +209,8 @@ def run():
     )
     run_metrics.run_alignment_metrics()
 
-    mirror_s3_prefix_to_results(metrics_output_path, results_folder)
-    list_results_tree(results_folder)
+    # mirror_s3_prefix_to_results(metrics_output_path, results_folder)
+    # list_results_tree(results_folder)
 
 if __name__ == "__main__":
     run()

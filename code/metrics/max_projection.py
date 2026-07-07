@@ -471,9 +471,14 @@ class NominalMaxProjectionMosaic:
         mosaic_uri = self.save_depth_mosaic_figure(mosaic_rgb, output_name, z_count=z_count)
         return mosaic_rgb, centers, tile_bounds, mosaic_uri
 
-    def draw_pairwise_links_on_mosaic(self, mosaic_png: np.ndarray, centers, rows, output_name: str, tile_bounds=None, z_count: int | None = None):
+    def draw_pairwise_links_on_mosaic(self, dropped_pairs, mosaic_png: np.ndarray, centers, rows, output_name: str, tile_bounds=None, z_count: int | None = None):
         if mosaic_png is None or not centers:
             return None
+
+        dropped_pair_set = {
+            (min(int(pair[0]), int(pair[1])), max(int(pair[0]), int(pair[1])))
+            for pair in (dropped_pairs or [])
+        }
 
         best_row_by_pair = {}
 
@@ -515,8 +520,10 @@ class NominalMaxProjectionMosaic:
                     linestyle="--", zorder=3,
                 )
                 ax.add_patch(rect)
+        
+        drawn_pairs = set()
 
-        for r in best_row_by_pair.values():
+        for pair, r in best_row_by_pair.items():
             a = int(r[0])
             b = int(r[1])
             corr = float(r[5])
@@ -524,15 +531,55 @@ class NominalMaxProjectionMosaic:
             if a not in centers or b not in centers:
                 continue
 
+            is_dropped = pair in dropped_pair_set
+
             ax.plot(
                 [centers[a]["cx"], centers[b]["cx"]],
                 [centers[a]["cy"], centers[b]["cy"]],
                 color=self.edge_color(corr),
                 linewidth=line_width,
-                alpha=0.90,
+                linestyle=":" if is_dropped else "-",
+                alpha=0.95 if is_dropped else 0.90,
                 solid_capstyle="round",
+                dash_capstyle="round",
                 zorder=4,
             )
+
+            drawn_pairs.add(pair)
+
+        # Draw dropped links that are no longer present in StitchingResults.
+        for a, b in sorted(dropped_pair_set - drawn_pairs):
+            if a not in centers or b not in centers:
+                continue
+
+            ax.plot(
+                [centers[a]["cx"], centers[b]["cx"]],
+                [centers[a]["cy"], centers[b]["cy"]],
+                color="white",
+                linewidth=line_width,
+                linestyle=":",
+                alpha=0.95,
+                dash_capstyle="round",
+                zorder=4,
+            )
+
+        # for r in best_row_by_pair.values():
+        #     a = int(r[0])
+        #     b = int(r[1])
+        #     corr = float(r[5])
+
+        #     if a not in centers or b not in centers:
+        #         continue
+
+        #     ax.plot(
+        #         [centers[a]["cx"], centers[b]["cx"]],
+        #         [centers[a]["cy"], centers[b]["cy"]],
+        #         color=self.edge_color(corr),
+        #         linewidth=line_width,
+        #         alpha=0.90,
+        #         solid_capstyle="round",
+        #         zorder=4,
+        #     )
 
         n_tiles = len(centers)
 
@@ -572,7 +619,22 @@ class NominalMaxProjectionMosaic:
                 Line2D([0], [0], color="white", lw=max(0.7, 1.0 * style), alpha=0.55, linestyle="--", label="tile bounds")
             )
         
-        legend_ncol = 5 if tile_bounds else 4
+        if dropped_pair_set:
+            legend_handles.append(
+                Line2D(
+                    [0],
+                    [0],
+                    color="white",
+                    lw=max(1.0, 2.0 * style),
+                    linestyle=":",
+                    alpha=0.95,
+                    label="dropped by solver",
+                )
+            )
+        
+        # legend_ncol = 5 if tile_bounds else 4
+
+        legend_ncol = len(legend_handles)
 
         # Put title and legend in separate figure-level bands.
         # Using fig.suptitle avoids fighting with ax.set_title + tight_layout.
@@ -611,7 +673,7 @@ class NominalMaxProjectionMosaic:
         plt.close(fig)
         return uri
 
-    def run(self):
+    def run(self, dropped_pairs):
         root = self.load_xml_root(self.xml_path)
 
         setup_sizes = self.parse_view_setup_sizes(root)
@@ -705,6 +767,7 @@ class NominalMaxProjectionMosaic:
         rows = self.extract_pairwise_rows(root, xy_thresh_log2=2.0)
 
         max_projection_links_uri = self.draw_pairwise_links_on_mosaic(
+            dropped_pairs=dropped_pairs,
             mosaic_png=mosaic_png,
             centers=centers,
             rows=rows,

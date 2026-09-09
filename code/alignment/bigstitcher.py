@@ -360,6 +360,8 @@ def main(
             str(output_big_stitcher_xml),
             "--downsampling",
             f"{downsampled_scale},{downsampled_scale},{downsampled_scale}",
+            "--minR",
+            str(0.0)
         ]
     else:
         stitching_command = [

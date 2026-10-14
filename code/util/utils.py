@@ -403,6 +403,64 @@ def save_string_to_txt(txt: str, filepath: PathLike, mode="w") -> None:
         file.write(txt + "\n")
 
 
+# def generate_processing(
+#     data_processes: List[DataProcess],
+#     dest_processing: str,
+#     processor_full_name: str,
+#     pipeline_version: str,
+#     processing_json_s3: Optional[str] = None,
+# ):
+#     """Generate AIND v2 processing metadata, appending existing S3 metadata."""
+
+#     new_processing = Processing(
+#         data_processes=data_processes,
+#         notes="Z1 phase-correlation alignment metadata.",
+#     )
+
+#     processing = json.loads(new_processing.model_dump_json())
+
+#     if processing_json_s3:
+#         parsed = urlparse(processing_json_s3)
+#         s3 = boto3.client("s3")
+
+#         try:
+#             obj = s3.get_object(
+#                 Bucket=parsed.netloc,
+#                 Key=parsed.path.lstrip("/"),
+#             )
+#         except ClientError as exc:
+#             if exc.response["Error"]["Code"] not in {"NoSuchKey", "404"}:
+#                 raise
+#             print("[processing-metadata] Starting fresh.")
+#         else:
+#             body = obj["Body"]
+#             try:
+#                 existing = json.loads(body.read().decode("utf-8"))
+#             finally:
+#                 body.close()
+
+#             if not isinstance(existing, dict) or not isinstance(
+#                 existing.get("data_processes"), list
+#             ):
+#                 raise ValueError("Invalid existing processing.json")
+
+#             existing["data_processes"].extend(
+#                 processing["data_processes"]
+#             )
+#             processing = existing
+
+#             print("[processing-metadata] Appended alignment metadata.")
+
+#     output_path = Path(dest_processing) / "processing.json"
+#     output_path.parent.mkdir(parents=True, exist_ok=True)
+
+#     output_path.write_text(
+#         json.dumps(processing, indent=3) + "\n",
+#         encoding="utf-8",
+#     )
+
+#     print(f"[processing-metadata] Wrote {output_path}")
+
 def generate_processing(
     data_processes: List[DataProcess],
     dest_processing: str,
@@ -410,7 +468,19 @@ def generate_processing(
     pipeline_version: str,
     processing_json_s3: Optional[str] = None,
 ):
-    """Generate AIND v2 processing metadata, appending existing S3 metadata."""
+    """Append alignment metadata to S3 without writing a local file."""
+
+    if not processing_json_s3:
+        raise ValueError("processing_json_s3 is required.")
+
+    parsed = urlparse(processing_json_s3)
+    bucket = parsed.netloc
+    key = parsed.path.lstrip("/")
+
+    if parsed.scheme != "s3" or not bucket or not key:
+        raise ValueError(
+            f"Invalid S3 processing metadata path: {processing_json_s3}"
+        )
 
     new_processing = Processing(
         data_processes=data_processes,
@@ -418,48 +488,43 @@ def generate_processing(
     )
 
     processing = json.loads(new_processing.model_dump_json())
+    s3 = boto3.client("s3")
 
-    if processing_json_s3:
-        parsed = urlparse(processing_json_s3)
-        s3 = boto3.client("s3")
+    # Fetch existing processing history.
+    try:
+        obj = s3.get_object(Bucket=bucket, Key=key)
+    except ClientError as exc:
+        if exc.response["Error"]["Code"] not in {"NoSuchKey", "404"}:
+            raise
 
+        print("[processing-metadata] Starting fresh.")
+    else:
+        body = obj["Body"]
         try:
-            obj = s3.get_object(
-                Bucket=parsed.netloc,
-                Key=parsed.path.lstrip("/"),
-            )
-        except ClientError as exc:
-            if exc.response["Error"]["Code"] not in {"NoSuchKey", "404"}:
-                raise
-            print("[processing-metadata] Starting fresh.")
-        else:
-            body = obj["Body"]
-            try:
-                existing = json.loads(body.read().decode("utf-8"))
-            finally:
-                body.close()
+            existing = json.loads(body.read().decode("utf-8"))
+        finally:
+            body.close()
 
-            if not isinstance(existing, dict) or not isinstance(
-                existing.get("data_processes"), list
-            ):
-                raise ValueError("Invalid existing processing.json")
+        if not isinstance(existing, dict) or not isinstance(
+            existing.get("data_processes"), list
+        ):
+            raise ValueError("Invalid existing processing.json")
 
-            existing["data_processes"].extend(
-                processing["data_processes"]
-            )
-            processing = existing
+        # Preserve existing metadata and append alignment.
+        existing["data_processes"].extend(processing["data_processes"])
+        processing = existing
 
-            print("[processing-metadata] Appended alignment metadata.")
+        print("[processing-metadata] Appended alignment metadata.")
 
-    output_path = Path(dest_processing) / "processing.json"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    output_path.write_text(
-        json.dumps(processing, indent=3) + "\n",
-        encoding="utf-8",
+    # Upload directly from memory.
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=(json.dumps(processing, indent=3) + "\n").encode("utf-8"),
+        ContentType="application/json",
     )
 
-    print(f"[processing-metadata] Wrote {output_path}")
+    print(f"[processing-metadata] Uploaded -> {processing_json_s3}")
 
 
 def check_type_helper(value: Any, val_type: type) -> bool:

@@ -517,10 +517,30 @@ def generate_processing(
         print("[processing-metadata] Appended alignment metadata.")
 
     # Upload directly from memory.
+    # s3.put_object(
+    #     Bucket=bucket,
+    #     Key=key,
+    #     Body=(json.dumps(processing, indent=3) + "\n").encode("utf-8"),
+    #     ContentType="application/json",
+    # )
+
+    # print(f"[processing-metadata] Uploaded -> {processing_json_s3}")
+
+    # Serialize once so local and S3 metadata contain the same history.
+    payload = json.dumps(processing, indent=3) + "\n"
+
+    # Save the complete processing history to the capsule results.
+    output_path = Path(dest_processing) / "processing.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(payload, encoding="utf-8")
+
+    print(f"[processing-metadata] Wrote -> {output_path}")
+
+    # Upload the same processing history to S3.
     s3.put_object(
         Bucket=bucket,
         Key=key,
-        Body=(json.dumps(processing, indent=3) + "\n").encode("utf-8"),
+        Body=payload.encode("utf-8"),
         ContentType="application/json",
     )
 

@@ -16,7 +16,7 @@ class RunMetrics:
 
         self.xy_thres = 2.0
         self.view_scale_level = "2"
-        self.zarr_scale_level = "4"
+        self.zarr_scale_level = "2"
 
     def _is_s3_path(self, path: str) -> bool:
         return path.startswith("s3://")
@@ -63,7 +63,7 @@ class RunMetrics:
             rows_sorted, dropped_pairs
         )
 
-        max_projection_png_uri, max_projection_links_png_uri = max_projection.run()
+        max_projection_png_uri, max_projection_links_png_uri = max_projection.run(dropped_pairs)
 
         if dropped_pairs:
             dropped_txt_uri = dropped_report.write(rows_sorted, dropped_pairs, pair_errors)

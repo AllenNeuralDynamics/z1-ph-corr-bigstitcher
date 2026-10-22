@@ -350,8 +350,6 @@ def main(
     
     downsampled_scale = int(scale_for_transforms)
 
-    downsampled_scale = 8
-
     is_proteomics = False
     project_name = utils.get_project_name()
     if project_name == "PLACE": 
@@ -362,7 +360,7 @@ def main(
 
     curr_folder = Path(os.path.realpath(__file__)).parent
     code_folder = curr_folder.parent
-    run_classes_script = code_folder / "run_classes.sh"
+    run_classes_script = code_folder / "alignment/run_classes.sh"
 
     # Assuming machine with 128G and 16 cores
     env.update(
@@ -381,6 +379,8 @@ def main(
             str(output_big_stitcher_xml),
             "--downsampling",
             f"{downsampled_scale},{downsampled_scale},{downsampled_scale}",
+            "--minR",
+            str(0.0)
         ]
     else:
         stitching_command = [

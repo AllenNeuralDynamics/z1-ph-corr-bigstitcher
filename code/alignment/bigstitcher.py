@@ -11,12 +11,30 @@ from pathlib import Path
 from time import time
 from typing import List, Optional, Tuple
 import dask.array as da
-from aind_data_schema.core.processing import DataProcess, ProcessName
-from natsort import natsorted
+from datetime import datetime, timezone
+from aind_data_schema.base import _GenericModel
+from aind_data_schema.components.identifiers import Code
+from aind_data_schema.core.processing import DataProcess, ProcessStage
+from aind_data_schema_models.process_names import ProcessName
 
+from natsort import natsorted
 from util.bdv_checkerboard_settings import CheckerboardSettingsBDV
 from util import utils, create_nominal_positions
 
+REPO_URL = "https://github.com/AllenNeuralDynamics/z1-ph-corr-bigstitcher"
+GIT_URL = f"{REPO_URL}.git"
+
+def fetch_main_commit_sha() -> Optional[str]:
+    result = subprocess.run(
+        ["git", "ls-remote", GIT_URL, "refs/heads/main"],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    if result.returncode != 0 or not result.stdout.strip():
+        print(f"[processing-metadata] Git SHA unavailable: {result.stderr.strip()}")
+        return None
+    return result.stdout.split()[0]
 
 def validate_capsule_inputs(input_elements: List[str]) -> List[str]:
     """
@@ -279,6 +297,7 @@ def main(
     output_json_file,
     results_folder,
     dataset_name,
+    processing_json_s3,
     res_for_transforms=(0.19, 0.19, 0.85),
     scale_for_transforms=None
 ):
@@ -434,29 +453,38 @@ def main(
     output_big_stitcher_json = (
         f"{results_folder}/{dataset_name}_stitch_channel_{channel_wavelength}_params.json"
     )
-
-    data_processes = []
-    data_processes.append(
+    
+    data_processes = [
         DataProcess(
-            name=ProcessName.IMAGE_TILE_ALIGNMENT,
-            software_version="e112363",
-            start_date_time=start_time,
-            end_date_time=end_time,
-            input_location=str(dataset_name),
-            output_location=str(output_big_stitcher_json),
-            outputs={"output_file": str(output_big_stitcher_json)},
-            code_url="",
-            code_version="1.2.7",
-            parameters={"stitching": stitching_command, "global_optimization": global_opt_command},
+            process_type=ProcessName.IMAGE_TILE_ALIGNMENT,
+            stage=ProcessStage.PROCESSING,
+            code=Code(
+                url=REPO_URL,
+                name="z1-ph-corr-bigstitcher",
+                version="1.2.7",
+                commit_hash=fetch_main_commit_sha(),
+                run_script="/code/run",
+                language="Python",
+                parameters=_GenericModel(
+                    input_location=str(path_to_data),
+                    output_location=str(output_big_stitcher_json),
+                    stitching=stitching_command,
+                    global_optimization=global_opt_command,
+                ),
+            ),
+            experimenters=["Sean Fite"],
+            start_date_time=datetime.fromtimestamp(start_time, timezone.utc),
+            end_date_time=datetime.fromtimestamp(end_time, timezone.utc),
             notes="Running stitching and global optimization separately",
         )
-    )
+    ]
 
     utils.generate_processing(
         data_processes=data_processes,
-        dest_processing=metadata_folder,
+        dest_processing=results_folder,
         processor_full_name="Sean Fite",
         pipeline_version="3.0.0",
+        processing_json_s3=processing_json_s3,
     )
 
     # Generate settings script for BDV

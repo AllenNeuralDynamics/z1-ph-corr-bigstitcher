@@ -106,6 +106,10 @@ def run():
     if processed_asset_name is None or bucket_name is None:
         raise ValueError("Stitching requires S3 paths in Code Ocean at the moment.")
 
+    processing_json_s3 = (
+        f"s3://{bucket_name}/{processed_asset_name}/processing.json"
+    )
+
     path_to_data = f"s3://{bucket_name}/{processed_asset_name}/image_radial_correction"
     output_settings = f"s3://{bucket_name}/{processed_asset_name}/image_tile_alignment/bdv_settings.xml"
 
@@ -124,6 +128,7 @@ def run():
         output_json_file=output_json_file,
         results_folder=results_folder,
         dataset_name=dataset_name,
+        processing_json_s3=processing_json_s3,
         res_for_transforms=(0.76, 0.76, 3.4),
         scale_for_transforms=4
     )

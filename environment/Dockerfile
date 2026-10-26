@@ -53,7 +53,8 @@ RUN pip3 install --no-cache-dir \
     zarr==2.16.1 \
     natsort==8.4.0 \
     matplotlib==3.9.2 \
-    aind-data-schema==1.4.0 \
+    aind-data-schema==2.9.0 \
+    aind-data-schema-models \
     numcodecs==0.13.1 \
     boto3 \
     xmltodict \

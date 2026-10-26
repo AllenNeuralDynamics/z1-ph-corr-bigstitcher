@@ -15,13 +15,15 @@ from datetime import datetime
 from pathlib import Path
 import glob
 from typing import Any, List, Optional, Tuple, Union
-
+from packaging import version
 import matplotlib.pyplot as plt
 import psutil
-from aind_data_schema.base import AindCoreModel
-from aind_data_schema.core.processing import (DataProcess, PipelineProcess,
-                                              Processing)
-from packaging import version
+import boto3
+from botocore.exceptions import ClientError
+from urllib.parse import urlparse
+
+from aind_data_schema.base import DataCoreModel
+from aind_data_schema.core.processing import DataProcess, Processing
 
 # IO types
 PathLike = Union[str, Path]
@@ -406,43 +408,75 @@ def generate_processing(
     dest_processing: str,
     processor_full_name: str,
     pipeline_version: str,
+    processing_json_s3: Optional[str] = None,
 ):
-    """
-    Generates data description for the output folder.
+    """Append alignment metadata to S3 without writing a local file."""
 
-    Parameters
-    ------------------------
+    if not processing_json_s3:
+        raise ValueError("processing_json_s3 is required.")
 
-    data_processes: List[dict]
-        List with the processes aplied in the pipeline.
+    parsed = urlparse(processing_json_s3)
+    bucket = parsed.netloc
+    key = parsed.path.lstrip("/")
 
-    dest_processing: PathLike
-        Path where the processing file will be placed.
+    if parsed.scheme != "s3" or not bucket or not key:
+        raise ValueError(
+            f"Invalid S3 processing metadata path: {processing_json_s3}"
+        )
 
-    processor_full_name: str
-        Person in charged of running the pipeline
-        for this data asset
-
-    pipeline_version: str
-        Terastitcher pipeline version
-
-    """
-    # flake8: noqa: E501
-    processing_pipeline = PipelineProcess(
+    new_processing = Processing(
         data_processes=data_processes,
-        processor_full_name=processor_full_name,
-        pipeline_version=pipeline_version,
-        pipeline_url="https://github.com/AllenNeuralDynamics/aind-smartspim-pipeline",
-        note="Metadata for the stitching step, it does not include stitching compute time.",
+        notes="Z1 phase-correlation alignment metadata.",
     )
 
-    processing = Processing(
-        processing_pipeline=processing_pipeline,
-        notes="This processing only contains metadata about fusion \
-            and needs to be compiled with other steps at the end",
+    processing = json.loads(new_processing.model_dump_json())
+    s3 = boto3.client("s3")
+
+    # Fetch existing processing history.
+    try:
+        obj = s3.get_object(Bucket=bucket, Key=key)
+    except ClientError as exc:
+        if exc.response["Error"]["Code"] not in {"NoSuchKey", "404"}:
+            raise
+
+        print("[processing-metadata] Starting fresh.")
+    else:
+        body = obj["Body"]
+        try:
+            existing = json.loads(body.read().decode("utf-8"))
+        finally:
+            body.close()
+
+        if not isinstance(existing, dict) or not isinstance(
+            existing.get("data_processes"), list
+        ):
+            raise ValueError("Invalid existing processing.json")
+
+        # Preserve existing metadata and append alignment.
+        existing["data_processes"].extend(processing["data_processes"])
+        processing = existing
+
+        print("[processing-metadata] Appended alignment metadata.")
+
+    # Serialize once so local and S3 metadata contain the same history.
+    payload = json.dumps(processing, indent=3) + "\n"
+
+    # Save the complete processing history to the capsule results.
+    output_path = Path(dest_processing) / "processing.json"
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(payload, encoding="utf-8")
+
+    print(f"[processing-metadata] Wrote -> {output_path}")
+
+    # Upload the same processing history to S3.
+    s3.put_object(
+        Bucket=bucket,
+        Key=key,
+        Body=payload.encode("utf-8"),
+        ContentType="application/json",
     )
 
-    processing.write_standard_file(output_directory=dest_processing)
+    print(f"[processing-metadata] Uploaded -> {processing_json_s3}")
 
 
 def check_type_helper(value: Any, val_type: type) -> bool:
@@ -547,7 +581,7 @@ def copy_available_metadata(
 
     # We get all the valid filenames from the aind core model
     metadata_to_find = [
-        cls.default_filename() for cls in AindCoreModel.__subclasses__()
+        cls.default_filename() for cls in DataCoreModel.__subclasses__()
     ]
 
     # Making sure the paths are pathlib objects

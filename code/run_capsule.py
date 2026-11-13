@@ -2,6 +2,7 @@
 Run capsule for BigStitcher stitching
 """
 
+import argparse
 import csv
 import os
 import re
@@ -12,6 +13,8 @@ from urllib.parse import urlparse
 from alignment import bigstitcher
 from metrics.run_metrics import RunMetrics
 from util import utils
+
+BLOCK_AFFINE_MODES = ("off", "shadow", "apply")
 
 def write_solver_removed_links_csv(results_folder: Path) -> None:
     """
@@ -63,8 +66,12 @@ def write_solver_removed_links_csv(results_folder: Path) -> None:
 
     print(f"[POST] wrote: {out_csv} ({len(rows)} rows)")
 
-def run():
+def run(block_affine_mode: str = "off", block_affine_pyramid_level: int = 2):
     """Function that runs image stitching with BigStitcher"""
+    if block_affine_mode not in BLOCK_AFFINE_MODES:
+        raise ValueError(
+            f"--block_affine must be one of {BLOCK_AFFINE_MODES}; got {block_affine_mode!r}"
+        )
     data_folder = Path(os.path.abspath("../data"))
     results_folder = Path(os.path.abspath("../results"))
 
@@ -144,6 +151,22 @@ def run():
     if not dropped_csv_path.exists():
         dropped_csv_path = None
 
+    # Optional refinement of the BigStitcher placement; in "apply" mode it replaces
+    # bigstitcher.xml only when every QC gate passes. It runs before the alignment
+    # metrics and the multichannel combine so both describe the selected placement.
+    # Imported lazily so "off" runs exactly the production code path.
+    if block_affine_mode != "off":
+        import block_affine
+
+        block_affine.run(
+            mode=block_affine_mode,
+            results_folder=results_folder,
+            config=block_affine.BlockAffineConfig(
+                pyramid_level=block_affine_pyramid_level
+            ),
+            workers=int(utils.get_code_ocean_cpu_limit()),
+        )
+
     metrics_output_path = (
         f"s3://{bucket_name}/{processed_asset_name}/image_tile_alignment/alignment_metrics"
     )
@@ -157,5 +180,26 @@ def run():
     )
     run_metrics.run_alignment_metrics()
 
+
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--block_affine",
+        default="off",
+        choices=BLOCK_AFFINE_MODES,
+        help="off: production only; shadow: write candidate + QC only; "
+        "apply: use the candidate when QC passes",
+    )
+    parser.add_argument("--block_affine_pyramid_level", type=int, default=2)
+    args, unknown = parser.parse_known_args(argv)
+    if unknown:
+        print(f"Ignoring unrecognized arguments: {unknown}")
+    return args
+
+
 if __name__ == "__main__":
-    run()
+    args = parse_args()
+    run(
+        block_affine_mode=args.block_affine,
+        block_affine_pyramid_level=args.block_affine_pyramid_level,
+    )

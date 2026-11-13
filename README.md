@@ -70,13 +70,15 @@ Block-affine outputs (`shadow`/`apply`):
 * **block_affine/training_blocks.csv**, **training_seams.csv**, **training_measurements.csv** - seam measurements
 * **block_affine/solution.json**, **cross_validation.csv**, **model_summary.csv** - fitted corrections and ridge selection
 * **block_affine/tile_guardrails.csv**, **holdout_blocks_{seed,candidate}.csv**, **holdout_seams.csv** - QC
+* **processing.json** - gains a "Block-affine tile refinement" data process (configuration as parameters,
+  decision and held-out metrics as outputs), placed after the BigStitcher alignment in the dependency graph
 
 Run on an existing XML outside the capsule: `cd code; python -m block_affine bigstitcher.xml out/ --anonymous`.
 Tests: `python -m pytest tests` (golden reproduction of the validated Dandelion R3 level-2 solution
 plus a synthetic end-to-end run). `--smoke_test 1` checks the environment without touching `/data`
 or `/results`.
 
-**Test-run options** (defaults keep production behaviour)
+**Test-run options** (defaults keep production behaviour; all are App Panel parameters)
 
 * `--write_s3_outputs 0` - keep `bdv_settings.xml`, `alignment_metrics/` and `processing.json` in
   `/results` instead of writing them to the dataset's S3 prefix.

@@ -20,7 +20,7 @@ def main() -> int:
     import run_capsule  # noqa: F401
     from alignment import bigstitcher  # noqa: F401
     from single_channel_xmls import xml_utils  # noqa: F401
-    from block_affine import measure, stage  # noqa: F401
+    from block_affine import measure, metadata, stage  # noqa: F401
 
     bigstitcher_home = Path(os.environ.get("BIGSTITCHER_HOME", "/home/BigStitcher-Spark"))
     jars = list((bigstitcher_home / "target").glob("*.jar"))

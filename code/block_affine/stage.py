@@ -182,6 +182,7 @@ def refine(
     return {
         "passed": not reasons,
         "reasons": reasons,
+        "image_root": mosaic.image_root,
         "anchor_tile": anchor,
         "tiles": len(labels),
         "seams": len(seams),

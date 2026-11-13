@@ -22,6 +22,7 @@ from util.bdv_checkerboard_settings import CheckerboardSettingsBDV
 from util import utils, create_nominal_positions
 
 REPO_URL = "https://github.com/AllenNeuralDynamics/z1-ph-corr-bigstitcher"
+CODE_VERSION = "1.2.7"
 GIT_URL = f"{REPO_URL}.git"
 
 def fetch_main_commit_sha() -> Optional[str]:
@@ -463,7 +464,7 @@ def main(
             code=Code(
                 url=REPO_URL,
                 name="z1-ph-corr-bigstitcher",
-                version="1.2.7",
+                version=CODE_VERSION,
                 commit_hash=fetch_main_commit_sha(),
                 run_script="/code/run",
                 language="Python",

@@ -199,9 +199,12 @@ def run(
     # metrics and the multichannel combine so both describe the selected placement.
     # Imported lazily so "off" runs exactly the production code path.
     if block_affine_mode != "off":
+        import time
+
         import block_affine
 
-        block_affine.run(
+        started = time.time()
+        decision = block_affine.run(
             mode=block_affine_mode,
             results_folder=results_folder,
             config=block_affine.BlockAffineConfig(
@@ -209,6 +212,25 @@ def run(
             ),
             workers=int(utils.get_code_ocean_cpu_limit()),
         )
+        try:
+            from block_affine.metadata import data_process
+
+            utils.append_to_processing(
+                data_process(
+                    decision,
+                    started,
+                    time.time(),
+                    repo_url=bigstitcher.REPO_URL,
+                    version=bigstitcher.CODE_VERSION,
+                    commit_hash=bigstitcher.fetch_main_commit_sha(),
+                    experimenters=["Matt Davis"],
+                ),
+                dest_processing=results_folder,
+                processing_json_s3=processing_json_s3,
+                upload=write_s3_outputs,
+            )
+        except Exception as error:  # noqa: BLE001 - metadata must not fail the stitching run
+            print(f"[processing-metadata] Block-affine entry not written: {type(error).__name__}: {error}")
 
     metrics_output_path = (
         f"s3://{bucket_name}/{processed_asset_name}/image_tile_alignment/alignment_metrics"
@@ -245,6 +267,8 @@ def parse_args(argv=None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--input_dataset_s3",
+        nargs="?",
+        const="",
         default="",
         help="test runs: stage inputs from an existing processed asset "
         "(s3://bucket/asset) instead of /data",

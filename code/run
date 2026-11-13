@@ -1,7 +1,40 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# --smoke_test is always stripped here so the App Panel default (0) never reaches
+# run_capsule.py. Accepts --smoke_test, --smoke_test 1, --smoke_test=true, etc.
+smoke_test=0
+args=()
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --smoke_test=*|--smoke-test=*)
+            value="${1#*=}"
+            ;;
+        --smoke_test|--smoke-test)
+            value=1
+            if [[ $# -gt 1 && "$2" != --* ]]; then
+                value="$2"
+                shift
+            fi
+            ;;
+        *)
+            args+=("$1")
+            shift
+            continue
+            ;;
+    esac
+    case "${value,,}" in
+        1|true|yes) smoke_test=1 ;;
+        *) smoke_test=0 ;;
+    esac
+    shift
+done
+
+if [[ "$smoke_test" == 1 ]]; then
+    exec python -u /code/smoke_test.py
+fi
+
 # Stream to UI + save full logs
-python /code/run_capsule.py "$@" 2>&1 | tee /results/logs.txt
+python /code/run_capsule.py "${args[@]+"${args[@]}"}" 2>&1 | tee /results/logs.txt
 
 python /code/single_channel_xmls/combine_stitching_and_camera_alignment.py

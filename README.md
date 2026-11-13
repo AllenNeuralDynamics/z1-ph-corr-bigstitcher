@@ -42,3 +42,39 @@ XML channel outputs:
 
 <br>
 
+**Optional block-affine refinement** (`--block_affine off|shadow|apply`, default `off`)
+
+Refines the channel-405 BigStitcher placement with localized seam measurements
+([issue #2](https://github.com/AllenNeuralDynamics/z1-ph-corr-bigstitcher/issues/2)). For every
+face-sharing seam it phase-correlates a 3 x 3 grid of blocks (along the seam x depth) at
+`--block_affine_pyramid_level` (default 2), keeps blocks that pass quality gates (peak inside the
+search bounds, peak SNR >= 5, raw and high-pass correlation improve), and fits one Huber-robust,
+ridge-regularized near-identity affine per tile anchored at the grid-center tile. The candidate is
+checked with per-tile transform guardrails, graph connectivity, and a shifted 4 x 4 held-out block
+grid measured under both the BigStitcher seed and the candidate.
+
+* `off` - not run; outputs are identical to production.
+* `shadow` - writes the candidate and QC to `block_affine/`; `bigstitcher.xml` is unchanged.
+* `apply` - replaces `bigstitcher.xml` with the candidate only when every gate passes; otherwise
+  keeps the BigStitcher seed. The alignment metrics and the combine/split step then use the
+  selected placement.
+
+The correction is composed into each tile's index-0 stitching transform (`C @ S`), so the downstream
+combine step yields `C @ S @ camera @ nominal` for every channel with no extra resampling.
+
+Block-affine outputs (`shadow`/`apply`):
+
+* **bigstitcher_seed.xml** - BigStitcher placement before refinement
+* **block_affine/decision.json** - mode, configuration, pass/fail reasons and selected placement
+* **block_affine/bigstitcher_block_affine.xml** - candidate placement
+* **block_affine/training_blocks.csv**, **training_seams.csv**, **training_measurements.csv** - seam measurements
+* **block_affine/solution.json**, **cross_validation.csv**, **model_summary.csv** - fitted corrections and ridge selection
+* **block_affine/tile_guardrails.csv**, **holdout_blocks_{seed,candidate}.csv**, **holdout_seams.csv** - QC
+
+Run on an existing XML outside the capsule: `cd code; python -m block_affine bigstitcher.xml out/ --anonymous`.
+Tests: `python -m pytest tests` (golden reproduction of the validated Dandelion R3 level-2 solution
+plus a synthetic end-to-end run). `--smoke_test 1` checks the environment without touching `/data`
+or `/results`.
+
+<br>
+

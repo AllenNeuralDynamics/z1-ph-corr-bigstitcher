@@ -299,7 +299,9 @@ def main(
     dataset_name,
     processing_json_s3,
     res_for_transforms=(0.19, 0.19, 0.85),
-    scale_for_transforms=None
+    scale_for_transforms=None,
+    upload_processing=True,
+    data_folder=None,
 ):
     """
     Computes image stitching with BigStitcher using Phase Correlation
@@ -351,7 +353,7 @@ def main(
     downsampled_scale = int(scale_for_transforms)
 
     is_proteomics = False
-    project_name = utils.get_project_name()
+    project_name = utils.get_project_name(data_folder)
     if project_name == "PLACE": 
         is_proteomics = True
         print("PROTEOMICS DATASET")
@@ -485,6 +487,7 @@ def main(
         processor_full_name="Sean Fite",
         pipeline_version="3.0.0",
         processing_json_s3=processing_json_s3,
+        upload=upload_processing,
     )
 
     # Generate settings script for BDV

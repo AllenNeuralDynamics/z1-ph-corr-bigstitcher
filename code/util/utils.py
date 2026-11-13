@@ -28,7 +28,7 @@ from aind_data_schema.core.processing import DataProcess, Processing
 # IO types
 PathLike = Union[str, Path]
 
-def get_project_name() ->str: 
+def get_project_name(base_data_dir: Optional[Path] = None) -> str:
     """
     Load the data_description.json file from the data directory and extract project_name .
     
@@ -49,7 +49,7 @@ def get_project_name() ->str:
     RuntimeError
         If error occurs while loading or parsing the JSON configuration
     """
-    base_data_dir = Path("/data")
+    base_data_dir = Path(base_data_dir) if base_data_dir is not None else Path("/data")
     
     # Use glob to search for data_description.json in all possible locations
     search_patterns = [
@@ -409,8 +409,9 @@ def generate_processing(
     processor_full_name: str,
     pipeline_version: str,
     processing_json_s3: Optional[str] = None,
+    upload: bool = True,
 ):
-    """Append alignment metadata to S3 without writing a local file."""
+    """Append alignment metadata to the S3 processing history (read-only when upload is False)."""
 
     if not processing_json_s3:
         raise ValueError("processing_json_s3 is required.")
@@ -467,6 +468,10 @@ def generate_processing(
     output_path.write_text(payload, encoding="utf-8")
 
     print(f"[processing-metadata] Wrote -> {output_path}")
+
+    if not upload:
+        print(f"[processing-metadata] S3 upload disabled; not writing {processing_json_s3}")
+        return
 
     # Upload the same processing history to S3.
     s3.put_object(

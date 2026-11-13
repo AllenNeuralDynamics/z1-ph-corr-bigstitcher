@@ -76,5 +76,13 @@ Tests: `python -m pytest tests` (golden reproduction of the validated Dandelion 
 plus a synthetic end-to-end run). `--smoke_test 1` checks the environment without touching `/data`
 or `/results`.
 
+**Test-run options** (defaults keep production behaviour)
+
+* `--write_s3_outputs 0` - keep `bdv_settings.xml`, `alignment_metrics/` and `processing.json` in
+  `/results` instead of writing them to the dataset's S3 prefix.
+* `--input_dataset_s3 s3://<bucket>/<processed asset>` - stage the inputs (acquisition, data
+  description, processing manifest, camera-aligned XML) from an existing processed asset into
+  `/scratch/staged_inputs` instead of reading `/data`.
+
 <br>
 

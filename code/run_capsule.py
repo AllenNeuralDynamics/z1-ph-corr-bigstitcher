@@ -2,7 +2,9 @@
 Run capsule for BigStitcher stitching
 """
 
+import argparse
 import csv
+import json
 import os
 import re
 import boto3
@@ -12,6 +14,38 @@ from urllib.parse import urlparse
 from alignment import bigstitcher
 from metrics.run_metrics import RunMetrics
 from util import utils
+
+BLOCK_AFFINE_MODES = ("off", "shadow", "apply")
+# Test runs can stage inputs from an existing processed asset instead of /data.
+# The combine step looks for the camera-aligned XML here before ../data.
+STAGED_INPUTS = Path(os.path.abspath("../scratch/staged_inputs"))
+CAMERA_ALIGNED_XML = "stitching_cam_alignment_spot_channels.xml"
+
+
+def stage_inputs_from_s3(dataset_s3: str, destination: Path = STAGED_INPUTS) -> Path:
+    """Build the capsule's /data inputs from a processed asset's S3 prefix."""
+    parsed = urlparse(dataset_s3.rstrip("/"))
+    bucket, prefix = parsed.netloc, parsed.path.lstrip("/")
+    if parsed.scheme != "s3" or not bucket or not prefix:
+        raise ValueError(f"--input_dataset_s3 must be s3://bucket/asset; got {dataset_s3}")
+    s3 = boto3.client("s3")
+    (destination / "processed").mkdir(parents=True, exist_ok=True)
+    for key, name in (
+        ("acquisition.json", "acquisition.json"),
+        ("data_description.json", "data_description.json"),
+        ("processing_manifest.json", "processing_manifest.json"),
+        (f"image_tile_alignment/{CAMERA_ALIGNED_XML}", CAMERA_ALIGNED_XML),
+    ):
+        s3.download_file(bucket, f"{prefix}/{key}", str(destination / name))
+    # The processed asset's own data description names it; images are read from its prefix.
+    (destination / "processed" / "data_description.json").write_bytes(
+        (destination / "data_description.json").read_bytes()
+    )
+    (destination / "radial_correction_parameters.json").write_text(
+        json.dumps({"bucket_name": bucket})
+    )
+    print(f"Staged inputs from {dataset_s3} into {destination}")
+    return destination
 
 def write_solver_removed_links_csv(results_folder: Path) -> None:
     """
@@ -63,9 +97,20 @@ def write_solver_removed_links_csv(results_folder: Path) -> None:
 
     print(f"[POST] wrote: {out_csv} ({len(rows)} rows)")
 
-def run():
+def run(
+    block_affine_mode: str = "off",
+    block_affine_pyramid_level: int = 2,
+    write_s3_outputs: bool = True,
+    input_dataset_s3: str = "",
+):
     """Function that runs image stitching with BigStitcher"""
+    if block_affine_mode not in BLOCK_AFFINE_MODES:
+        raise ValueError(
+            f"--block_affine must be one of {BLOCK_AFFINE_MODES}; got {block_affine_mode!r}"
+        )
     data_folder = Path(os.path.abspath("../data"))
+    if input_dataset_s3:
+        data_folder = stage_inputs_from_s3(input_dataset_s3)
     results_folder = Path(os.path.abspath("../results"))
 
     # data_folder = Path(data_folder)
@@ -112,6 +157,9 @@ def run():
 
     path_to_data = f"s3://{bucket_name}/{processed_asset_name}/image_radial_correction"
     output_settings = f"s3://{bucket_name}/{processed_asset_name}/image_tile_alignment/bdv_settings.xml"
+    if not write_s3_outputs:
+        output_settings = str(results_folder / "bdv_settings.xml")
+        print("S3 outputs disabled: BDV settings, alignment metrics and processing.json stay in /results")
 
     stitching_channel_path = data_folder.joinpath(f"processed")
 
@@ -130,7 +178,9 @@ def run():
         dataset_name=dataset_name,
         processing_json_s3=processing_json_s3,
         res_for_transforms=(0.76, 0.76, 3.4),
-        scale_for_transforms=4
+        scale_for_transforms=4,
+        upload_processing=write_s3_outputs,
+        data_folder=data_folder if input_dataset_s3 else None,
     )
 
     write_solver_removed_links_csv(results_folder)
@@ -144,9 +194,56 @@ def run():
     if not dropped_csv_path.exists():
         dropped_csv_path = None
 
+    # Optional refinement of the BigStitcher placement; in "apply" mode it replaces
+    # bigstitcher.xml only when every QC gate passes. It runs before the alignment
+    # metrics and the multichannel combine so both describe the selected placement.
+    # Imported lazily so "off" runs exactly the production code path.
+    # Proteomics (PLACE) datasets always skip the refinement.
+    if block_affine_mode != "off":
+        import block_affine
+
+        block_affine_mode = block_affine.effective_mode(
+            block_affine_mode, utils.get_project_name(data_folder)
+        )
+    if block_affine_mode != "off":
+        import time
+
+        import block_affine
+
+        started = time.time()
+        decision = block_affine.run(
+            mode=block_affine_mode,
+            results_folder=results_folder,
+            config=block_affine.BlockAffineConfig(
+                pyramid_level=block_affine_pyramid_level
+            ),
+            workers=int(utils.get_code_ocean_cpu_limit()),
+        )
+        try:
+            from block_affine.metadata import data_process
+
+            utils.append_to_processing(
+                data_process(
+                    decision,
+                    started,
+                    time.time(),
+                    repo_url=bigstitcher.REPO_URL,
+                    version=bigstitcher.CODE_VERSION,
+                    commit_hash=bigstitcher.fetch_main_commit_sha(),
+                    experimenters=["Matt Davis"],
+                ),
+                dest_processing=results_folder,
+                processing_json_s3=processing_json_s3,
+                upload=write_s3_outputs,
+            )
+        except Exception as error:  # noqa: BLE001 - metadata must not fail the stitching run
+            print(f"[processing-metadata] Block-affine entry not written: {type(error).__name__}: {error}")
+
     metrics_output_path = (
         f"s3://{bucket_name}/{processed_asset_name}/image_tile_alignment/alignment_metrics"
     )
+    if not write_s3_outputs:
+        metrics_output_path = str(results_folder / "alignment_metrics")
 
     print(f"QC output will be written to: {metrics_output_path}")
 
@@ -157,5 +254,43 @@ def run():
     )
     run_metrics.run_alignment_metrics()
 
+
+def parse_args(argv=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--block_affine",
+        default="off",
+        choices=BLOCK_AFFINE_MODES,
+        help="off: production only; shadow: write candidate + QC only; "
+        "apply: use the candidate when QC passes",
+    )
+    parser.add_argument("--block_affine_pyramid_level", type=int, default=2)
+    parser.add_argument(
+        "--write_s3_outputs",
+        default="1",
+        type=lambda value: str(value).strip().lower() in ("1", "true", "yes"),
+        help="0 keeps BDV settings, alignment metrics and processing.json in /results "
+        "instead of writing them to the dataset's S3 prefix (for test runs)",
+    )
+    parser.add_argument(
+        "--input_dataset_s3",
+        nargs="?",
+        const="",
+        default="",
+        help="test runs: stage inputs from an existing processed asset "
+        "(s3://bucket/asset) instead of /data",
+    )
+    args, unknown = parser.parse_known_args(argv)
+    if unknown:
+        print(f"Ignoring unrecognized arguments: {unknown}")
+    return args
+
+
 if __name__ == "__main__":
-    run()
+    args = parse_args()
+    run(
+        block_affine_mode=args.block_affine,
+        block_affine_pyramid_level=args.block_affine_pyramid_level,
+        write_s3_outputs=args.write_s3_outputs,
+        input_dataset_s3=args.input_dataset_s3,
+    )

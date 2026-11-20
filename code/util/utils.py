@@ -28,7 +28,7 @@ from aind_data_schema.core.processing import DataProcess, Processing
 # IO types
 PathLike = Union[str, Path]
 
-def get_project_name() ->str: 
+def get_project_name(base_data_dir: Optional[Path] = None) -> str:
     """
     Load the data_description.json file from the data directory and extract project_name .
     
@@ -49,7 +49,7 @@ def get_project_name() ->str:
     RuntimeError
         If error occurs while loading or parsing the JSON configuration
     """
-    base_data_dir = Path("/data")
+    base_data_dir = Path(base_data_dir) if base_data_dir is not None else Path("/data")
     
     # Use glob to search for data_description.json in all possible locations
     search_patterns = [
@@ -409,8 +409,9 @@ def generate_processing(
     processor_full_name: str,
     pipeline_version: str,
     processing_json_s3: Optional[str] = None,
+    upload: bool = True,
 ):
-    """Append alignment metadata to S3 without writing a local file."""
+    """Append alignment metadata to the S3 processing history (read-only when upload is False)."""
 
     if not processing_json_s3:
         raise ValueError("processing_json_s3 is required.")
@@ -468,6 +469,10 @@ def generate_processing(
 
     print(f"[processing-metadata] Wrote -> {output_path}")
 
+    if not upload:
+        print(f"[processing-metadata] S3 upload disabled; not writing {processing_json_s3}")
+        return
+
     # Upload the same processing history to S3.
     s3.put_object(
         Bucket=bucket,
@@ -476,6 +481,52 @@ def generate_processing(
         ContentType="application/json",
     )
 
+    print(f"[processing-metadata] Uploaded -> {processing_json_s3}")
+
+
+def append_to_processing(
+    data_process: DataProcess,
+    dest_processing: str,
+    processing_json_s3: Optional[str] = None,
+    upload: bool = True,
+) -> None:
+    """Append one DataProcess to the processing.json written earlier in this run.
+
+    Keeps process names unique and keeps the dependency graph covering every process
+    (a process missing from the graph depends on the one listed before it).
+    """
+    output_path = Path(dest_processing) / "processing.json"
+    processing = json.loads(output_path.read_text(encoding="utf-8"))
+    processes = processing.setdefault("data_processes", [])
+    entry = json.loads(data_process.model_dump_json())
+    names = [process.get("name") or process.get("process_type") for process in processes]
+    base_name, suffix = entry["name"], 1
+    while entry["name"] in names:
+        entry["name"] = f"{base_name}_{suffix}"
+        suffix += 1
+    processes.append(entry)
+    names.append(entry["name"])
+    graph = processing.get("dependency_graph")
+    if isinstance(graph, dict):
+        for index, name in enumerate(names):
+            if name not in graph:
+                graph[name] = [names[index - 1]] if index else []
+    try:
+        Processing.model_validate(processing)
+    except Exception as error:  # noqa: BLE001 - legacy history must not block the run
+        print(f"[processing-metadata] Warning: processing.json does not validate: {error}")
+    payload = json.dumps(processing, indent=3) + "\n"
+    output_path.write_text(payload, encoding="utf-8")
+    print(f"[processing-metadata] Appended {entry['name']} -> {output_path}")
+    if not upload or not processing_json_s3:
+        return
+    parsed = urlparse(processing_json_s3)
+    boto3.client("s3").put_object(
+        Bucket=parsed.netloc,
+        Key=parsed.path.lstrip("/"),
+        Body=payload.encode("utf-8"),
+        ContentType="application/json",
+    )
     print(f"[processing-metadata] Uploaded -> {processing_json_s3}")
 
 

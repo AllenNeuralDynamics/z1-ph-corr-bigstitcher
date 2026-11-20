@@ -1,0 +1,56 @@
+{
+	"version": 1,
+	"named_parameters": true,
+	"parameters": [
+		{
+			"id": "blockAffineMode1",
+			"name": "block_affine",
+			"param_name": "block_affine",
+			"description": "Block-affine refinement of the 405 tile placement: off, shadow (QC only) or apply (use when QC passes)",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "off"
+		},
+		{
+			"id": "blockAffineLevel",
+			"name": "block_affine_pyramid_level",
+			"param_name": "block_affine_pyramid_level",
+			"description": "OME-Zarr pyramid level for block-affine seam measurements (0 = full resolution)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "2",
+			"minimum": 0,
+			"maximum": 4
+		},
+		{
+			"id": "writeS3Outputs01",
+			"name": "write_s3_outputs",
+			"param_name": "write_s3_outputs",
+			"description": "1: write BDV settings, alignment metrics and processing.json to the dataset's S3 prefix; 0: keep them in /results (test runs)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "1",
+			"minimum": 0,
+			"maximum": 1
+		},
+		{
+			"id": "inputDatasetS301",
+			"name": "input_dataset_s3",
+			"param_name": "input_dataset_s3",
+			"description": "Test runs: stage inputs from an existing processed asset (s3://bucket/asset) instead of /data; empty = /data",
+			"type": "text",
+			"value_type": "string"
+		},
+		{
+			"id": "smokeTestFlag001",
+			"name": "smoke_test",
+			"param_name": "smoke_test",
+			"description": "1: only import the code and exit (cheap Reproducible Run before API pipeline launches)",
+			"type": "text",
+			"value_type": "integer",
+			"default_value": "0",
+			"minimum": 0,
+			"maximum": 1
+		}
+	]
+}

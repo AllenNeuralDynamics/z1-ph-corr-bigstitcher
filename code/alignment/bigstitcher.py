@@ -22,6 +22,7 @@ from util.bdv_checkerboard_settings import CheckerboardSettingsBDV
 from util import utils, create_nominal_positions
 
 REPO_URL = "https://github.com/AllenNeuralDynamics/z1-ph-corr-bigstitcher"
+CODE_VERSION = "1.2.7"
 GIT_URL = f"{REPO_URL}.git"
 
 def fetch_main_commit_sha() -> Optional[str]:
@@ -299,7 +300,9 @@ def main(
     dataset_name,
     processing_json_s3,
     res_for_transforms=(0.19, 0.19, 0.85),
-    scale_for_transforms=None
+    scale_for_transforms=None,
+    upload_processing=True,
+    data_folder=None,
 ):
     """
     Computes image stitching with BigStitcher using Phase Correlation
@@ -351,7 +354,7 @@ def main(
     downsampled_scale = int(scale_for_transforms)
 
     is_proteomics = False
-    project_name = utils.get_project_name()
+    project_name = utils.get_project_name(data_folder)
     if project_name == "PLACE": 
         is_proteomics = True
         print("PROTEOMICS DATASET")
@@ -461,7 +464,7 @@ def main(
             code=Code(
                 url=REPO_URL,
                 name="z1-ph-corr-bigstitcher",
-                version="1.2.7",
+                version=CODE_VERSION,
                 commit_hash=fetch_main_commit_sha(),
                 run_script="/code/run",
                 language="Python",
@@ -485,6 +488,7 @@ def main(
         processor_full_name="Sean Fite",
         pipeline_version="3.0.0",
         processing_json_s3=processing_json_s3,
+        upload=upload_processing,
     )
 
     # Generate settings script for BDV

@@ -59,6 +59,8 @@ grid measured under both the BigStitcher seed and the candidate.
   keeps the BigStitcher seed. The alignment metrics and the combine/split step then use the
   selected placement.
 
+Proteomics datasets (`project_name` `PLACE`) always skip the refinement, whatever the mode.
+
 The correction is composed into each tile's index-0 stitching transform (`C @ S`), so the downstream
 combine step yields `C @ S @ camera @ nominal` for every channel with no extra resampling.
 

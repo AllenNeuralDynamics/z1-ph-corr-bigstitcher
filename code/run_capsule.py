@@ -198,6 +198,13 @@ def run(
     # bigstitcher.xml only when every QC gate passes. It runs before the alignment
     # metrics and the multichannel combine so both describe the selected placement.
     # Imported lazily so "off" runs exactly the production code path.
+    # Proteomics (PLACE) datasets always skip the refinement.
+    if block_affine_mode != "off":
+        import block_affine
+
+        block_affine_mode = block_affine.effective_mode(
+            block_affine_mode, utils.get_project_name(data_folder)
+        )
     if block_affine_mode != "off":
         import time
 

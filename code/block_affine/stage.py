@@ -23,8 +23,35 @@ import pandas as pd
 from . import measure, qc, solve, xml_io
 
 MODES = ("off", "shadow", "apply")
+# Projects whose datasets never run the refinement (PLACE = proteomics).
+SKIPPED_PROJECTS = ("PLACE",)
 CANDIDATE_XML = "bigstitcher_block_affine.xml"
 SEED_XML = "bigstitcher_seed.xml"
+
+
+def effective_mode(
+    mode: str, project_name: str, log: Callable[[str], None] = print
+) -> str:
+    """Return the block-affine mode to run for a dataset's project.
+
+    Parameters
+    ----------
+    mode : str
+        Requested mode, one of ``MODES``.
+    project_name : str
+        ``project_name`` from the dataset's ``data_description.json``.
+    log : Callable[[str], None], optional
+        Receives the skip message, by default ``print``.
+
+    Returns
+    -------
+    str
+        ``"off"`` for projects in ``SKIPPED_PROJECTS``, otherwise ``mode``.
+    """
+    if mode == "off" or project_name not in SKIPPED_PROJECTS:
+        return mode
+    log(f"[block-affine] skipped for project {project_name} (requested mode={mode})")
+    return "off"
 
 
 @dataclass

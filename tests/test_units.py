@@ -3,8 +3,24 @@ import pandas as pd
 import pytest
 from scipy.ndimage import shift as image_shift
 
-from block_affine import qc, solve, xml_io
+from block_affine import effective_mode, qc, solve, xml_io
 from block_affine.measure import axis_starts, phase_correlation_shift
+
+
+@pytest.mark.parametrize("mode", ["shadow", "apply"])
+def test_effective_mode_skips_place_projects(mode):
+    messages = []
+    assert effective_mode(mode, "PLACE", log=messages.append) == "off"
+    assert messages == [f"[block-affine] skipped for project PLACE (requested mode={mode})"]
+
+
+@pytest.mark.parametrize(
+    ("mode", "project"), [("apply", "HCR"), ("shadow", "HCR"), ("off", "HCR"), ("off", "PLACE")]
+)
+def test_effective_mode_passes_through_otherwise(mode, project):
+    messages = []
+    assert effective_mode(mode, project, log=messages.append) == mode
+    assert messages == []
 
 
 def test_phase_correlation_recovers_shift_to_apply_to_moving():
